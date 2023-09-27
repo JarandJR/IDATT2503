@@ -1,0 +1,17 @@
+(Build and start docker service)
+docker-compose up --build && docker-compose run x86-asm-env bash
+
+(Making library)
+gcc -c -fPIC a_function.c more_functions.c                    
+gcc -shared a_function.o more_functions.o -o libfunctions.so
+cp libfunctions.so /usr/lib 
+
+(Compile code)
+gcc main.c -lfunctions -o c_example
+./c_example
+
+(After fixing error make library again and run executable)
+gcc -c -fPIC a_function.c more_functions.c                    
+gcc -shared a_function.o more_functions.o -o libfunctions.so
+cp libfunctions.so /usr/lib 
+./c_example
