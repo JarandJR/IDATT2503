@@ -1,0 +1,11 @@
+docker-compose up --build -d
+docker-compose run x86-asm-env bash
+
+(When the bash is running)
+nasm -f elf64 hello.s
+ld hello.o -o hello
+
+./hello
+
+(Confirming the exit code)
+echo $?
