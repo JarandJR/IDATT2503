@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdlib.h>
+#include "format_String.h"
 
-char* format(char *in) {
+char* format_string(char *in) {
     size_t l = strlen(in);
     size_t len = l;
     for (size_t i = 0; i < l; ++i) {
