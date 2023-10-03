@@ -1,6 +1,6 @@
-#ifndef FORMAT_H
-#define FORMAT_H
+#ifndef FORMAT_STRING_H
+#define FORMAT_STRING_H
 
-char* format(char *in);
+char* format_string(char *in);
 
 #endif

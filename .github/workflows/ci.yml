@@ -2,10 +2,10 @@ name: CI with fuzzing and tests with address sanitizer
 
 on:
   push:
-    branches:
-      - main 
     paths:
       - 'oving5/**'
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build-test-fuzz:
@@ -28,7 +28,7 @@ jobs:
         cd oving5/build
         CC=clang cmake ..
         make
-      
+
     - name: Run Tests
       run: |
         cd oving5/build
