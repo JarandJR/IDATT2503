@@ -1,10 +1,10 @@
 add_executable(format_string_test format_string_test.c)
-target_link_libraries(format_string_test format)
+target_link_libraries(format_string_test format_string)
 target_compile_options(format_string_test PRIVATE -fsanitize=address)
 target_link_options(format_string_test PRIVATE -fsanitize=address)
 add_test(NAME format_string_test COMMAND format_string_test)
 
 add_executable(fuzz_test fuzz_test.c)
-target_link_libraries(fuzz_test fuzz)
+target_link_libraries(fuzz_test format_string)
 target_compile_options(fuzz_test PRIVATE -fsanitize=fuzzer,address)
 target_link_options(fuzz_test PRIVATE -fsanitize=fuzzer,address)
