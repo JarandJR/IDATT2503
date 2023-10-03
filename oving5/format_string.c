@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
-#include "format_String.h"
+#include "format_string.h"
 
 char* format_string(char *in) {
     size_t l = strlen(in);
