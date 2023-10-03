@@ -9,10 +9,10 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     memcpy(str, data, size);
     str[size] = '\0';
 
-    /*char *result =*/ format_string(str);
-    /*if (result != NULL) {
+    char *result = format_string(str);
+    if (result != NULL) {
         free(result);
-    }*/
+    }
 
     free(str);
 
