@@ -1,0 +1,43 @@
+name: CI with fuzzing and tests with address sanitizer
+
+on:
+  push:
+    branches:
+      - main 
+    paths:
+      - 'oving5/**'
+
+jobs:
+  build-test-fuzz:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: sudo apt-get install -y cmake clang
+
+    - name: Prepare Build Directory
+      run: |
+        cd oving5/
+        mkdir build
+        cd build
+
+    - name: Configure CMake and Build
+      run: |
+        cd oving5/build
+        CC=clang cmake ..
+        make
+      
+    - name: Run Tests
+      run: |
+        cd oving5/build
+        ./tests/format_string_test
+
+    - name: Run Fuzzer
+      run: |
+        cd oving5/build
+        ./tests/fuzz_test -max_total_time=60
+
+    env:
+      ASAN_OPTIONS: "detect_leaks=1"
