@@ -1,0 +1,8 @@
+[package]
+name = "task1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hex = "0.4.3"
+ring = "0.17.3"
