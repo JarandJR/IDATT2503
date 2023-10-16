@@ -1,8 +1,18 @@
 mod task1;
 mod task2;
+mod task3;
+mod task4;
+mod task5;
 
 fn main() {
     println!("Oving 7\n---------------------");
-    task1::task1();
-    task2::task2();
+    //task1::run();
+    //std::thread::sleep(std::time::Duration::from_secs(8));
+    //NOT FINISHED //task2::run();
+    //std::thread::sleep(std::time::Duration::from_secs(8));
+    task3::run();
+    //std::thread::sleep(std::time::Duration::from_secs(8));
+    //NOT FINISHED //task4::run();
+    //std::thread::sleep(std::time::Duration::from_secs(8));
+    //NOT FINISHED //task5::run();
 }

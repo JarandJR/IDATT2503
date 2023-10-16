@@ -1,4 +1,4 @@
-pub fn task1() {
+pub fn run() {
     println!("Task 1\n---------------------\na)");
     let a = 17;
     let b = 27;
@@ -44,5 +44,5 @@ pub fn task1() {
         println!("a ≡/ b (mod n)");
         println!("because: a%n = {} != b%n = {}", remainder_a, remainder_b);
     }
-    println!("---------------------\n");
+    println!("\n---------------------\n");
 }
