@@ -10,7 +10,7 @@ fn main() {
     //std::thread::sleep(std::time::Duration::from_secs(8));
     //task2::run();
     //std::thread::sleep(std::time::Duration::from_secs(8));
-    //task3::run();
+    task3::run();
     //std::thread::sleep(std::time::Duration::from_secs(8));
     task4::run();
     //std::thread::sleep(std::time::Duration::from_secs(8));

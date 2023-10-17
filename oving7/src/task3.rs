@@ -46,6 +46,14 @@ fn get_alphabet_array() -> Vec<char> {
     "abcdefghijklmnopqrstuvwxyzæøå".chars().collect()
 }
 
+fn get_alphabet_hashmap() -> std::collections::HashMap<char, usize> {
+    let mut map = std::collections::HashMap::new();
+    for (i, &l) in get_alphabet_array().iter().enumerate() {
+        map.insert(l, i);
+    }
+    map
+}
+
 fn f(x: i32) -> i32 {
     (11 * x - 5).rem_euclid(29)
 }
@@ -55,19 +63,19 @@ fn f_inverse(y: i32, a: i32, b: i32) -> i32 {
 }
 
 fn encrypt(message: &str) -> String {
+    let map = get_alphabet_hashmap();
     let alp = get_alphabet_array();
-    let message:Vec<char> = message.chars().collect();
+    let message = message.chars().collect::<Vec<char>>();
 
     let mut res = String::new();
-    for i in 0..message.len() {
-        for j in 0..alp.len() {
-            let m_letter = message.get(i).expect("Could not get char");
-            let letter = alp.get(j).expect("Could not get char");
-            if  m_letter == letter{
-                let f_res = f(j as i32) as usize;
-                let encrypted_l = alp.get(f_res).expect("Could not find letter");
-                res.push(*encrypted_l);
-                break;
+    for &l in &message {
+        match map.get(&l) {
+            Some(&i) => {
+                let f_res = f(i as i32) as usize;
+                res.push(alp[f_res]);
+            }
+            None => {
+                panic!("Could not match letter and get index")
             }
         }
     }
@@ -75,19 +83,19 @@ fn encrypt(message: &str) -> String {
 }
 
 fn decrypt(message: &str) -> String {
+    let map = get_alphabet_hashmap();
     let alp = get_alphabet_array();
-    let message:Vec<char> = message.to_lowercase().chars().collect();
+    let message = message.to_lowercase().chars().collect::<Vec<char>>();
 
     let mut res = String::new();
-    for i in 0..message.len() {
-        for j in 0..alp.len() {
-            let m_letter = message.get(i).expect("Could not get char");
-            let letter = alp.get(j).expect("Could not get char");
-            if  m_letter == letter{
-                let f_res = f_inverse(j as i32, 8, 11) as usize;
-                let encrypted_l = alp.get(f_res).expect("Could not find letter");
-                res.push(*encrypted_l);
-                break;
+    for &l in &message {
+        match map.get(&l) {
+            Some(&i) => {
+                let f_res = f_inverse(i as i32, 8, 11) as usize;
+                res.push(alp[f_res]);
+            }
+            None => {
+                panic!("Could not match letter and get index")
             }
         }
     }
