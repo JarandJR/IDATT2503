@@ -16,7 +16,7 @@ pub fn run(){
     println!("Multiplicative inverse for 11 mod 29: {:?}", table);
 
     println!("\n---------------------\ne)");
-    println!("Formuler en sammenheng mellom det at a har en multiplikativ inverse modulo n, og om tallet har felles faktorer med n");
+    println!("If \'a\' has a multiplicative inverse modulo \'n\' it means that it has no common factors other than 1");
 
     println!("\n---------------------\n");
 }

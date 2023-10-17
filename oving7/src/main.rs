@@ -8,7 +8,7 @@ fn main() {
     println!("Oving 7\n---------------------");
     //task1::run();
     //std::thread::sleep(std::time::Duration::from_secs(8));
-    //NOT FINISHED //task2::run();
+    //task2::run();
     //std::thread::sleep(std::time::Duration::from_secs(8));
     task3::run();
     //std::thread::sleep(std::time::Duration::from_secs(8));
