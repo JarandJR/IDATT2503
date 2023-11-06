@@ -48,16 +48,16 @@ impl AES {
         }
     }
 
-    pub fn cipher(&mut self, rounds: usize) -> Vec<u8> {
+    pub fn cipher(&mut self, rounds: usize) -> [[u8; 4]; 4] {
         self.add_round_key();
         for i in 0..rounds {
-            if i < 10 {
+            if i < 9 {
                 self.cipher_round(i);
             } else {
                 self.cipher_last_round(i);
             }
         }
-        modify_result(&self.m)
+        self.m
     }
 
     fn cipher_round(&mut self, round: usize) {
@@ -184,16 +184,6 @@ fn galois_mult(mut a: u8, mut b: u8) -> u8 {
     p
 }
 
-fn modify_result(m: &[[u8;4];4]) -> Vec<u8>{
-    let mut res = Vec::new();
-    for row in m {
-        for &e in row {
-            res.push(e);
-        }
-    }
-    res
-}
-
 fn modify_message(m: &Vec<u8>) -> [[u8;4];4] {
     if m.len() != 16 {
         panic!("Message size mismatch")
@@ -202,7 +192,7 @@ fn modify_message(m: &Vec<u8>) -> [[u8;4];4] {
     let mut counter = 0;
     for i in 0..4 {
         for j in 0..4 {
-            mes[i][j] = *m.get(counter).unwrap();
+            mes[j][i] = *m.get(counter).unwrap();
             counter += 1;
         }
     }
@@ -217,7 +207,7 @@ fn modify_key(k: &Vec<u8>) -> [[u8;4];4] {
     let mut counter = 0;
     for i in 0..4 {
         for j in 0..4 {
-            key[i][j] = *k.get(counter).unwrap();
+            key[j][i] = *k.get(counter).unwrap();
             counter += 1;
         }
     }
