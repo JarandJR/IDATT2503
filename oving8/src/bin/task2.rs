@@ -76,7 +76,7 @@ fn bytes_to_hex(bytes: &[[u8; 4]; 4]) -> String {
                     .collect::<Vec<String>>()
                     .join("")[..]
         );
-        res.push_str("\n");
     }
+    res.push_str("\n");
     res
 }
