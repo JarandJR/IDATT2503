@@ -62,7 +62,7 @@ fn hex_to_bytes(hex: &str) -> Vec<u8> {
 
 fn vec_bytes_to_hex(bytes: &Vec<u8>) -> String {
     bytes.iter()
-        .map(|byte| format!("{:02x}", byte))
+        .map(|byte| format!("{:02X}", byte))
         .collect::<Vec<String>>()
         .join("")
 }
