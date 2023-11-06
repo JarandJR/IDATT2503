@@ -72,7 +72,7 @@ fn bytes_to_hex(bytes: &[[u8; 4]; 4]) -> String {
     for row in bytes {
         res.push_str(
             &row.iter()
-                    .map(|b| format!("{:02x}, ", b))
+                    .map(|b| format!("{:02X}, ", b))
                     .collect::<Vec<String>>()
                     .join("")[..]
         );
